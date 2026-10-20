@@ -6,7 +6,7 @@
   <title>Happy Birthday! 🎂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
 
@@ -210,31 +210,31 @@
           <button class="ll-back" id="llBackBtn">‹ Back</button>
             <figure class="polaroid pol-tl">
               
-              <div class="pol-photo"><img src="assets/photo-1.jpg" alt="Photo 1" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-1.jpg" alt="Photo 1" data-song="assets/photo-song-1.mp3" onerror="this.style.display='none'" /></div>
               <span class="pol-doodle">♡</span>
             </figure>
             <figure class="polaroid pol-tr">
               <span class="tape"></span>
-              <div class="pol-photo"><img src="assets/photo-2.jpg" alt="Photo 2" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-2.jpg" alt="Photo 2" data-song="assets/photo-song-2.mp3" onerror="this.style.display='none'" /></div>
               <span class="pol-doodle"></span>
             </figure>
             <figure class="polaroid pol-bl">
               <span class="tape"></span>
-              <div class="pol-photo"><img src="assets/photo-3.jpg" alt="Photo 3" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-3.jpg" alt="Photo 3" data-song="assets/photo-song-3.mp3" onerror="this.style.display='none'" /></div>
               <span class="pol-doodle"></span>
             </figure>
             <figure class="polaroid pol-br">
               
-              <div class="pol-photo"><img src="assets/photo-4.jpg" alt="Photo 4" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-4.jpg" alt="Photo 4" data-song="assets/photo-song-4.mp3" onerror="this.style.display='none'" /></div>
               <span class="pol-doodle">♡</span>
             </figure>
             <figure class="polaroid pol-ml">
               
-              <div class="pol-photo"><img src="assets/photo-5.jpg" alt="Photo 5" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-5.jpg" alt="Photo 5" data-song="assets/photo-song-5.mp3" onerror="this.style.display='none'" /></div>
             </figure>
             <figure class="polaroid pol-mr">
               <span class="tape"></span>
-              <div class="pol-photo"><img src="assets/photo-6.jpg" alt="Photo 6" onerror="this.style.display='none'" /></div>
+              <div class="pol-photo"><img src="assets/photo-6.jpg" alt="Photo 6" data-song="assets/photo-song-6.mp3" onerror="this.style.display='none'" /></div>
             </figure>
           <div class="letter"><div class="letter-text">
             <p>Dear Monika,</p>
@@ -331,7 +331,7 @@
             </div>
             <div class="gb-right">
               <button class="gb-open" id="gbOpenBtn" aria-label="Open"><img src="assets/open-envelope.png" alt="OPEN" /></button>
-              <img class="gb-love" id="gbLoveImg" src="assets/love-card.png" alt="I love you so much" hidden />
+              <img class="gb-love" id="gbLoveImg" title="Tap me" src="assets/love-card.png" alt="I love you so much" hidden />
             </div>
           </div>
         </div>
@@ -366,8 +366,55 @@
     </div>
   </div>
 
+  <!-- ══════════ SCREEN 10 — Balloons → Cake ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-10">
+    <div class="card-wrapper"><div class="card-frame"><div class="grid-paper">
+      <span class="bb-torn bb-torn--tl"></span>
+      <span class="bb-torn bb-torn--br"></span>
+      <button class="ll-back" id="bnBackBtn">‹ Back</button>
+
+      <div class="bn-stage" id="bnStage">
+        <h2 class="bn-heading">Pop the balloons! 🎈</h2>
+        <div class="bn-field" id="bnField"></div>
+      </div>
+
+      <div class="ck-stage" id="ckStage" hidden>
+        <h2 class="bn-heading" id="ckHeading">Make a wish &amp; blow the candles!</h2>
+        <div class="cake" id="cake">
+          <div class="cake-half cake-half--l"><div class="cake-body"></div></div>
+          <div class="cake-half cake-half--r"><div class="cake-body"></div></div>
+          <div class="candles" id="candles">
+            <span class="candle"><i class="flame"></i></span>
+            <span class="candle"><i class="flame"></i></span>
+            <span class="candle"><i class="flame"></i></span>
+          </div>
+          <div class="knife" id="knife" hidden>🔪</div>
+        </div>
+        <p class="ck-hint" id="ckHint">Blow into your mic 🎤</p>
+        <button class="ck-btn" id="ckBlowBtn">Tap to blow 💨</button>
+        <button class="ck-btn" id="ckPuzzleBtn" hidden>Play the puzzle 🧩</button>
+      </div>
+    </div></div></div>
+  </div>
+
+  <!-- ══════════ SCREEN 11 — Photo Puzzle ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-11">
+    <div class="card-wrapper"><div class="card-frame"><div class="grid-paper">
+      <span class="bb-torn bb-torn--tl"></span>
+      <span class="bb-torn bb-torn--br"></span>
+      <button class="ll-back" id="pzBackBtn">‹ Back</button>
+      <div class="pz-content">
+        <h2 class="bn-heading">Solve the puzzle 🧩</h2>
+        <div class="pz-thumbs" id="pzThumbs"></div>
+        <div class="pz-board" id="pzBoard"></div>
+        <p class="ck-hint" id="pzMsg">Pick a photo, then slide the tiles</p>
+        <button class="ck-btn" id="pzShuffle">Shuffle again</button>
+      </div>
+    </div></div></div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
 
