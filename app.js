@@ -247,6 +247,13 @@
     });
   }
 
+  /* Back buttons — Screen 2 → 1, Screen 4 → 2 */
+  document.getElementById('s2BackBtn').addEventListener('click', showScreen1);
+  document.getElementById('s4BackBtn').addEventListener('click', function () {
+    s4.classList.add('s-screen--hidden');
+    s2.classList.remove('s-screen--hidden');
+  });
+
   /* Gift selection (visual state only) */
   document.querySelectorAll('.gift-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
