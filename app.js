@@ -210,6 +210,7 @@
   });
   gbAudio.addEventListener('play',  setPlayIcon);
   gbAudio.addEventListener('pause', setPlayIcon);
+  gbAudio.loop = true;
   gbAudio.addEventListener('ended', function () { gbFill.style.width = '0'; setPlayIcon(); });
   gbAudio.addEventListener('timeupdate', function () {
     if (gbAudio.duration) gbFill.style.width = (gbAudio.currentTime / gbAudio.duration * 100) + '%';
