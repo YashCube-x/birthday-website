@@ -146,6 +146,11 @@
   const s8 = document.getElementById('screen-8');
   const gbOpen = document.getElementById('gbOpenBtn');
   const gbLove = document.getElementById('gbLoveImg');
+  const BOUQUET_MSG = {
+    roses:      { hand: 'roses for<br>my Monika!',       line: '“The love of my life”',          b: 'my heart is yours',  c: 'i love you, always' },
+    tulips:     { hand: 'tulips for<br>my cutie!',        line: '“My favourite smile”',           b: 'you make me happy',  c: 'my best friend' },
+    sunflowers: { hand: 'sunflowers for<br>my sunshine!', line: '“The brightest part of my day”', b: "i'm your #1 fan",    c: 'my favorite person' }
+  };
   const BOUQUET_IMG = { roses: 'assets/bouquet-roses.png', tulips: 'assets/bouquet-tulips.png', sunflowers: 'assets/bouquet-sunflowers.png' };
   let selectedBouquet = null;
   yesBtn.addEventListener('click', function () {
@@ -177,6 +182,11 @@
     document.body.dataset.bouquet = selectedBouquet;
     document.getElementById('sbBouquetImg').src = BOUQUET_IMG[selectedBouquet];
     document.getElementById('sbBouquetImg').alt = selectedBouquet;
+    const m = BOUQUET_MSG[selectedBouquet];
+    document.getElementById('sbHand').innerHTML = m.hand;
+    document.getElementById('sbLine').textContent = m.line;
+    document.getElementById('sbB').textContent = m.b;
+    document.getElementById('sbC').textContent = m.c;
     s6.classList.add('s-screen--hidden');
     s7.classList.remove('s-screen--hidden');
   });

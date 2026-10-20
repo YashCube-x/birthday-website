@@ -905,3 +905,6 @@ body {
 @media (min-width: 700px) {
   #screen-3 .tiktok-shell { width: min(100%, 560px); }
 }
+
+/* Welcome — her name under the heading */
+.wish-name { font-family: 'Dancing Script', cursive; font-weight: 600; font-size: clamp(1.4rem, 3.2vw, 2.2rem); color: hsl(345,85%,30%); margin: -.2rem 0 .3rem; text-align: center; }
