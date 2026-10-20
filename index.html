@@ -6,7 +6,7 @@
   <title>Happy Birthday! 🎂</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=4" />
+  <link rel="stylesheet" href="style.css?v=5" />
 </head>
 <body>
 
@@ -339,121 +339,35 @@
     </div>
   </div>
 
-  <!-- ══════════ SCREEN 3 — POV TikTok / Laptop ══════════ -->
-  <div class="s-screen s-screen--hidden" id="screen-3">
-
-    <!-- ── Black phone/social wrapper ── -->
-    <div class="tiktok-shell">
-
-      <!-- Status bar -->
-      <div class="tt-status-bar">
-        <span class="tt-time">9:56</span>
-        <div class="tt-status-icons">
-          <span>📶</span><span>🔋</span>
+  <!-- ══════════ SCREEN 9 — Why Did You Click NO ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-9">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="stars-group s2-stars">
+          <div class="star star-lg">★</div>
+          <div class="star star-md">★</div>
+          <div class="star star-sm">★</div>
+        </div>
+        <div class="flowers-group">
+          <span class="flower f1">🌺</span>
+          <span class="flower f2">🌺</span>
+        </div>
+        <div class="grid-paper">
+          <span class="bb-torn bb-torn--tl"></span>
+          <span class="bb-torn bb-torn--br"></span>
+          <span class="no-heart">♡</span>
+          <div class="no-content">
+            <h2 class="no-heading">WHY DID YOU CLICK NO!</h2>
+            <img class="no-char" src="assets/laptop-cry.png" alt="Crying character" />
+            <button class="no-retry" id="noRetryBtn">TRY AGAIN</button>
+          </div>
         </div>
       </div>
-
-      <!-- Profile header -->
-      <div class="tt-header">
-        <button class="tt-back" id="ttBackBtn">&#8592;</button>
-        <div class="tt-profile">
-          <div class="tt-avatar">S</div>
-          <div class="tt-profile-info">
-            <span class="tt-username">•&nbsp;◎&nbsp;SUYASH&nbsp;◎&nbsp;•</span>
-            <span class="tt-ago">2d ago</span>
-          </div>
-        </div>
-        <button class="tt-plus">&#43;</button>
-      </div>
-
-      <!-- Main content: pink area + right sidebar -->
-      <div class="tt-body">
-
-        <!-- Pink POV area -->
-        <div class="tt-pink-area">
-
-          <!-- POV heading -->
-          <p class="pov-line">
-            <strong class="pov-pov">POV:</strong>
-            <span class="pov-rest"> He surprises you with<br>this on your Birthday 💗</span>
-          </p>
-
-          <!-- Laptop mockup -->
-          <div class="lp-wrap">
-            <!-- Lid -->
-            <div class="lp-lid">
-              <div class="lp-cam"><div class="lp-cam-dot"></div></div>
-              <div class="lp-screen">
-                <img src="assets/laptop-cry.png" alt="Birthday surprise" class="lp-img" />
-              </div>
-              <div class="lp-glare"></div>
-            </div>
-            <!-- Hinge -->
-            <div class="lp-hinge"></div>
-            <!-- Base -->
-            <div class="lp-base">
-              <div class="lp-kb">
-                <div class="lp-row"><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span></div>
-                <div class="lp-row"><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span></div>
-                <div class="lp-row"><span class="lp-k lp-kxl"></span><span class="lp-k lp-kxl"></span></div>
-              </div>
-              <div class="lp-track"></div>
-            </div>
-            <div class="lp-foot">
-              <div class="lp-ft"></div><div class="lp-ft"></div>
-            </div>
-          </div><!-- /lp-wrap -->
-
-        </div><!-- /tt-pink-area -->
-
-        <!-- Right sidebar — interaction icons -->
-        <div class="tt-sidebar">
-          <div class="tt-action">
-            <span class="tt-icon">♡</span>
-            <span class="tt-count">1,588</span>
-          </div>
-          <div class="tt-action">
-            <span class="tt-icon">💬</span>
-            <span class="tt-count">5,250</span>
-          </div>
-          <div class="tt-action">
-            <span class="tt-icon">↗</span>
-            <span class="tt-count">27</span>
-          </div>
-          <div class="tt-action">
-            <span class="tt-icon">⊿</span>
-            <span class="tt-count">2,619</span>
-          </div>
-          <div class="tt-action">
-            <span class="tt-icon">🔖</span>
-            <span class="tt-count">1,125</span>
-          </div>
-        </div>
-
-      </div><!-- /tt-body -->
-
-      <!-- Bottom bar -->
-      <div class="tt-bottom">
-        <div class="tt-bottom-left">
-          <div class="tt-mini-avatars">
-            <div class="tt-mini-av">S</div>
-            <div class="tt-mini-av" style="margin-left:-6px">M</div>
-          </div>
-          <span class="tt-caption-text">Suyash and Monika</span>
-          <button class="tt-follow">Follow</button>
-        </div>
-        <div class="tt-music-row">🎵 Tum Hi Ho · Aashiqui 2</div>
-        <div class="tt-reply-bar">
-          <span class="tt-reply-icon">💌</span>
-          <span class="tt-reply-text">Happy Birthday Monika 💗 I love you</span>
-        </div>
-      </div>
-
-    </div><!-- /tiktok-shell -->
-  </div><!-- /screen-3 -->
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
 

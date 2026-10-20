@@ -275,16 +275,14 @@
     });
   });
 
-  /* NO button — open Screen 3 */
-  const s3        = document.getElementById('screen-3');
-  const ttBackBtn = document.getElementById('ttBackBtn');
+  /* NO button — open Screen 9; TRY AGAIN returns to Screen 2 */
+  const s9 = document.getElementById('screen-9');
   noBtn.addEventListener('click', function () {
     s2.classList.add('s-screen--hidden');
-    s3.classList.remove('s-screen--hidden');
-    s3.scrollTop = 0;
+    s9.classList.remove('s-screen--hidden');
   });
-  ttBackBtn.addEventListener('click', function () {
-    s3.classList.add('s-screen--hidden');
+  document.getElementById('noRetryBtn').addEventListener('click', function () {
+    s9.classList.add('s-screen--hidden');
     s2.classList.remove('s-screen--hidden');
   });
 
