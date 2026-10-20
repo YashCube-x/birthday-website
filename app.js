@@ -304,19 +304,12 @@
     btn.addEventListener('click', function () {
       document.querySelectorAll('.gift-btn').forEach(b => b.classList.remove('is-selected'));
       btn.classList.add('is-selected');
-      if (btn.dataset.gift === 'giftbox') {
-        gbOpen.hidden = false; gbLove.hidden = true;
+      heartFlood(function () {
         s4.classList.add('s-screen--hidden');
-        s8.classList.remove('s-screen--hidden');
-      }
-      if (btn.dataset.gift === 'bouquet') {
-        s4.classList.add('s-screen--hidden');
-        s6.classList.remove('s-screen--hidden');
-      }
-      if (btn.dataset.gift === 'envelope') {
-        s4.classList.add('s-screen--hidden');
-        s5.classList.remove('s-screen--hidden');
-      }
+        if (btn.dataset.gift === 'giftbox') { gbOpen.hidden = false; gbLove.hidden = true; s8.classList.remove('s-screen--hidden'); }
+        if (btn.dataset.gift === 'bouquet') s6.classList.remove('s-screen--hidden');
+        if (btn.dataset.gift === 'envelope') s5.classList.remove('s-screen--hidden');
+      });
     });
   });
 
