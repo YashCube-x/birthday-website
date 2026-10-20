@@ -796,3 +796,96 @@ body {
   .pz-board { width: min(92cqw, 52cqh); }
   .cake { width: min(80cqw, 50cqh); }
 }
+
+
+/* ===== RESPONSIVE — portrait phones (all screens) ===== */
+@media (max-aspect-ratio: 1/1) {
+  /* 4 — Choose Your Gifts: stack the three gifts */
+  .s4-heading { font-size: 8cqw; margin-bottom: 2cqh; margin-top: 4cqh; }
+  .s4-row { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); gap: 1cqh; padding: 0 8cqw; }
+  .gift-btn img, .gift-btn--center img { max-height: 24cqh; width: auto; max-width: 70%; }
+
+  /* 6 — Build Your Bouquet */
+  .bb-heading { font-size: 8.5cqw; }
+  .bb-sub { font-size: 4.2cqw; }
+  .bb-row { grid-template-columns: 1fr; grid-template-rows: repeat(3, 1fr); gap: 1cqh; padding: 2cqh 0; }
+  .bb-opt img { max-width: 62%; max-height: 100%; }
+  .bb-next { font-size: 4.4cqw; padding: .7em 2.4em; }
+
+  /* 7 — selected bouquet: character on top, bouquet, then labels */
+  .sb-content { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; padding: 8cqh 6cqw 3cqh; row-gap: 1cqh; }
+  .sb-left { flex-direction: row; align-items: center; justify-content: center; gap: 4cqw; }
+  .sb-char { width: 28%; }
+  .sb-hand { font-size: 6.5cqw; margin-top: 0; text-align: left; }
+  .sb-red-stars { display: none; }
+  .sb-bouquet { max-height: 100%; max-width: 78%; }
+  .sb-center { min-height: 0; }
+  .sb-right { height: auto; gap: 1.2cqh; padding-bottom: 5cqh; }
+  .sb-oval { font-size: 4.6cqw; padding: .7cqh 4.5cqw; }
+  .sb-line { font-size: 4.4cqw; }
+  .sb-spark { font-size: 4cqw; }
+  .sb-purple-star { font-size: 16cqw; left: 3cqw; bottom: 0; }
+
+  /* 8 — vinyl, player, envelope / love card stacked */
+  .gb-content { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; padding: 9cqh 6cqw 3cqh; row-gap: 2cqh; }
+  .gb-left { align-items: center; width: 100%; }
+  .gb-vinyl { width: 100%; }
+  .gb-player { width: 100%; padding: 1.2cqh 3cqw; gap: 3cqw; border-radius: 3cqw; }
+  .gb-thumb { width: 11cqw; height: 11cqw; border-radius: 1.5cqw; }
+  .gb-song { font-size: 3.3cqw; }
+  .gb-song span { font-size: 2.7cqw; }
+  .gb-play { width: 8.5cqw; height: 8.5cqw; font-size: 3.2cqw; }
+  .gb-right { height: auto; }
+  .gb-open { width: 72%; }
+  .gb-love { max-width: 62%; max-height: 38cqh; }
+  .gb-star { display: none; }
+  .gb-flower { left: 4%; bottom: 2%; font-size: 12cqw; }
+
+  /* 9, 10, 11 */
+  .no-heading { font-size: 7.4cqw; }
+  .no-retry { font-size: 4.2cqw; }
+  .bn-heading { font-size: 7.4cqw; }
+  .ck-hint { font-size: 4.4cqw; }
+  .ck-btn { font-size: 4cqw; }
+  .balloon { width: clamp(52px, 15cqw, 90px); }
+}
+
+/* ===== RESPONSIVE — short landscape phones ===== */
+@media (max-height: 520px) and (min-aspect-ratio: 1/1) {
+  .no-heading, .bn-heading, .s4-heading { font-size: 7cqh; margin: 0; }
+  .bb-heading { font-size: 9cqh; }
+  .bb-sub { font-size: 4.5cqh; }
+  .ck-hint { font-size: 5cqh; }
+  .ck-stage { gap: 1cqh; padding-top: 3cqh; }
+  .cake { width: min(40cqw, 52cqh); }
+  .pz-content { gap: .8cqh; }
+  .pz-board { width: min(60cqw, 62cqh); }
+  .pz-thumb { width: 8cqh; }
+  .pz-content .bn-heading { display: none; }
+  .no-char { height: 50cqh; }
+  .sb-hand { font-size: 5cqh; }
+  .sb-oval { font-size: 5.5cqh; }
+  .sb-line { font-size: 5cqh; }
+  .gb-song { font-size: 4cqh; }
+  .gb-song span { font-size: 3.2cqh; }
+}
+
+/* ===== Continue → heart flood transition ===== */
+.heart-flood { position: fixed; inset: 0; z-index: 2000; overflow: hidden; background: hsla(345,70%,55%,0); pointer-events: all; animation: flood-bg 1.2s ease-out forwards; transition: opacity .6s ease; }
+.heart-flood.fade { opacity: 0; pointer-events: none; }
+.flood-heart { position: absolute; line-height: 1; transform: scale(0); animation: flood-pop .5s cubic-bezier(.2,1.4,.4,1) forwards; text-shadow: 0 2px 6px rgba(0,0,0,.2); }
+@keyframes flood-pop { to { transform: scale(1); } }
+@keyframes flood-bg { to { background: hsla(345,70%,50%,.95); } }
+
+/* portrait bouquet screen — keep the three bouquets above the Next button */
+@media (max-aspect-ratio: 1/1) {
+  .bb-row { grid-template-rows: repeat(3, minmax(0, 1fr)); min-height: 0; }
+  .bb-opt { min-height: 0; }
+  .bb-opt img { width: 100%; height: 100%; max-width: 60%; max-height: 100%; object-fit: contain; }
+}
+
+.pz-content, .pz-board, .pz-tile { -webkit-user-select: none; user-select: none; }
+@media (max-height: 520px) and (min-aspect-ratio: 1/1) {
+  .cake { width: min(34cqw, 46cqh); }
+  .knife { top: -14%; }
+}

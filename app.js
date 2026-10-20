@@ -136,7 +136,31 @@
     threeCanvas.style.opacity = '1';
   }
 
-  continueBtn.addEventListener('click', showScreen2);
+  /* Continue — hearts flood the whole screen, then the next page opens */
+  let heartBusy = false;
+  function heartFlood(done) {
+    if (heartBusy) return;
+    heartBusy = true;
+    const layer = document.createElement('div');
+    layer.className = 'heart-flood';
+    const size = Math.max(64, Math.min(innerWidth, innerHeight) / 5);
+    const cols = Math.ceil(innerWidth / size) + 1, rows = Math.ceil(innerHeight / size) + 1;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const h = document.createElement('span');
+        h.className = 'flood-heart';
+        h.textContent = '❤';
+        h.style.cssText = 'left:' + (c * size - size / 3) + 'px;top:' + (r * size - size / 3) + 'px;' +
+          'font-size:' + (size * 1.5) + 'px;animation-delay:' + (Math.random() * 0.7).toFixed(2) + 's;' +
+          'color:hsl(' + (335 + Math.random() * 20) + ',80%,' + (45 + Math.random() * 15) + '%)';
+        layer.appendChild(h);
+      }
+    }
+    document.body.appendChild(layer);
+    setTimeout(function () { done(); layer.classList.add('fade'); }, 1250);   // screen is fully covered
+    setTimeout(function () { layer.remove(); heartBusy = false; }, 1850);
+  }
+  continueBtn.addEventListener('click', function () { heartFlood(showScreen2); });
 
   /* YES button — open Screen 4 */
   const s4 = document.getElementById('screen-4');
