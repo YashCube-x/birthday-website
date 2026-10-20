@@ -897,3 +897,11 @@ body {
   z-index: 50; transform: translate(var(--dx), var(--dy)) rotate(0deg) scale(3);
   box-shadow: 0 18px 50px rgba(0,0,0,.5);
 }
+
+/* Screen 3 (NO response) — centre the content, no empty pink band */
+#screen-3 .tt-pink-area { justify-content: center; gap: clamp(14px, 4vh, 34px); }
+#screen-3 .pov-line { font-size: clamp(1rem, 4.2vw, 1.6rem); }
+#screen-3 .lp-wrap { max-width: none; }
+@media (min-width: 700px) {
+  #screen-3 .tiktok-shell { width: min(100%, 560px); }
+}
