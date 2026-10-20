@@ -253,6 +253,7 @@
 
   /* Letter photos — each photo has its own song */
   const photoAudio = new Audio();
+  (window.__songs = window.__songs || []).push(photoAudio);
   photoAudio.loop = true;
   function playSong(card) {
     const src = card.querySelector('img').dataset.song;
@@ -551,4 +552,39 @@
     if (solved) msg.textContent = '🎉 You did it in ' + moves + ' moves!';
     render();
   }
+})();
+
+
+/* ═══ Background birthday tune: plays everywhere, pauses while any song plays ═══ */
+(function () {
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) return;
+  const c = new AC(), master = c.createGain();
+  master.gain.value = 0.5; master.connect(c.destination);
+  const f = { G4:392, A4:440, B4:494, C5:523, D5:587, E5:659, F5:698, G5:784 };
+  const seq = [['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],
+               ['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',2]];
+  const beat = 0.45, total = seq.reduce((a, n) => a + n[1], 0) * beat + 1.2;
+  let timer = null, wanted = false;
+  function round() {
+    let t = c.currentTime + 0.05;
+    seq.forEach(function (n) {
+      const o = c.createOscillator(), g = c.createGain();
+      o.type = 'triangle'; o.frequency.value = f[n[0]];
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + n[1] * beat);
+      o.connect(master); o.start(t); o.stop(t + n[1] * beat + 0.05);
+      t += n[1] * beat;
+    });
+  }
+  function start() { if (timer || !wanted) return; c.resume(); round(); timer = setInterval(round, total * 1000); }
+  function stop() { clearInterval(timer); timer = null; master.gain.value = 0; setTimeout(function () { if (!timer) c.suspend(); master.gain.value = 0.5; }, 50); }
+  function anySong() { return [...document.querySelectorAll('audio')].concat(window.__songs || []).some(a => !a.paused); }
+  function sync() { anySong() ? stop() : start(); }
+  document.addEventListener('play', sync, true);
+  document.addEventListener('pause', sync, true);
+  document.addEventListener('ended', sync, true);
+  document.addEventListener('click', function () { wanted = true; setTimeout(sync, 60); }, { once: true });
+  document.getElementById('continueBtn').addEventListener('click', function () { wanted = true; sync(); });
+  const iv = setInterval(sync, 400);
 })();
