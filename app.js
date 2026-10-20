@@ -560,7 +560,7 @@
   const AC = window.AudioContext || window.webkitAudioContext;
   if (!AC) return;
   const c = new AC(), master = c.createGain();
-  master.gain.value = 0.5; master.connect(c.destination);
+  master.gain.value = 0.17; master.connect(c.destination);
   const f = { G4:392, A4:440, B4:494, C5:523, D5:587, E5:659, F5:698, G5:784 };
   const seq = [['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],
                ['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',2]];
@@ -578,7 +578,7 @@
     });
   }
   function start() { if (timer || !wanted) return; c.resume(); round(); timer = setInterval(round, total * 1000); }
-  function stop() { clearInterval(timer); timer = null; master.gain.value = 0; setTimeout(function () { if (!timer) c.suspend(); master.gain.value = 0.5; }, 50); }
+  function stop() { clearInterval(timer); timer = null; master.gain.value = 0; setTimeout(function () { if (!timer) c.suspend(); master.gain.value = 0.17; }, 50); }
   function anySong() { return [...document.querySelectorAll('audio')].concat(window.__songs || []).some(a => !a.paused); }
   function sync() { anySong() ? stop() : start(); }
   document.addEventListener('play', sync, true);
