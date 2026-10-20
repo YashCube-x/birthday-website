@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday! 🎂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Three.js canvas background -->
+  <canvas id="three-canvas"></canvas>
+
+  <!-- ══════════ SCREEN 1 — Welcome Card ══════════ -->
+  <div class="s-screen" id="screen-1">
+    <div class="card-wrapper">
+
+      <!-- Dark outer border frame -->
+      <div class="card-frame">
+
+        <!-- Torn paper left side -->
+        <div class="torn torn-left">
+          <div class="torn-inner"></div>
+        </div>
+
+        <!-- Torn paper right side -->
+        <div class="torn torn-right">
+          <div class="torn-inner"></div>
+        </div>
+
+        <!-- Stars top-right -->
+        <div class="stars-group">
+          <div class="star star-lg">★</div>
+          <div class="star star-md">★</div>
+          <div class="star star-sm">★</div>
+        </div>
+
+        <!-- Flowers bottom-left -->
+        <div class="flowers-group">
+          <span class="flower f1">🌺</span>
+          <span class="flower f2">🌸</span>
+          <span class="flower f3">🌷</span>
+        </div>
+
+        <!-- Flower bottom-right -->
+        <div class="flower-right">
+          <span class="flower f4">🌺</span>
+        </div>
+
+        <!-- Floating hearts -->
+        <span class="hrt h1">♡</span>
+        <span class="hrt h2">♡</span>
+        <span class="hrt h3">♡</span>
+        <span class="hrt h4">♡</span>
+        <span class="hrt h5">♡</span>
+        <span class="hrt h6">♡</span>
+
+        <!-- Grid paper background -->
+        <div class="grid-paper">
+
+          <!-- Center content -->
+          <div class="center-content">
+            <h1 class="main-heading">
+              Happy<br>Birthday!
+            </h1>
+
+            <!-- Divider -->
+            <div class="divider-row">
+              <span class="div-line">——</span>
+              <span class="div-heart">♡</span>
+              <span class="div-line">——</span>
+            </div>
+
+            <!-- Continue button -->
+            <button class="continue-btn" id="continueBtn">
+              <span class="btn-mail">✉</span>
+              <span class="btn-text">Continue</span>
+              <span class="btn-chevron">›</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 2 — Please Accept The Gift ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-2">
+    <div class="card-wrapper">
+
+      <!-- Dark outer border frame (same as Screen 1) -->
+      <div class="card-frame">
+
+        <!-- Torn paper left -->
+        <div class="torn torn-left">
+          <div class="torn-inner"></div>
+        </div>
+
+        <!-- Torn paper right -->
+        <div class="torn torn-right">
+          <div class="torn-inner"></div>
+        </div>
+
+        <!-- Stars top-right (purple/dark like reference) -->
+        <div class="stars-group s2-stars">
+          <div class="star star-lg">★</div>
+          <div class="star star-md">★</div>
+          <div class="star star-sm">★</div>
+        </div>
+
+        <!-- Flowers bottom-left -->
+        <div class="flowers-group">
+          <span class="flower f1">🌺</span>
+          <span class="flower f2">🌺</span>
+          <span class="flower f3">🌸</span>
+        </div>
+
+        <!-- Flower bottom-right -->
+        <div class="flower-right">
+          <span class="flower f4">🌺</span>
+        </div>
+
+        <!-- Confetti dots (CSS-generated via JS) -->
+        <div class="confetti-layer" id="confettiLayer"></div>
+
+        <!-- Grid paper background -->
+        <div class="grid-paper">
+
+          <!-- Screen 2 center content -->
+          <div class="s2-content">
+
+            <!-- Heading -->
+            <h2 class="s2-heading">PLEASE ACCEPT THE GIFT</h2>
+
+            <!-- Skull character -->
+            <div class="skull-wrap">
+              <img
+                src="assets/skull.png"
+                alt="Cute skull character"
+                class="skull-img"
+              />
+            </div>
+
+            <!-- YES / NO buttons -->
+            <div class="yn-row">
+              <button class="yn-btn yn-yes" id="yesBtn">YES</button>
+              <button class="yn-btn yn-no"  id="noBtn">NO</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 4 — Choose Your Gifts ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-4">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="torn torn-left"><div class="torn-inner"></div></div>
+        <div class="torn torn-right"><div class="torn-inner"></div></div>
+        <div class="stars-group s2-stars">
+          <div class="star star-lg">★</div>
+          <div class="star star-md">★</div>
+          <div class="star star-sm">★</div>
+        </div>
+        <div class="flowers-group">
+          <span class="flower f1">🌺</span>
+          <span class="flower f2">🌺</span>
+          <span class="flower f3">🌸</span>
+        </div>
+        <div class="flower-right"><span class="flower f4">🌺</span></div>
+        <span class="hrt h1">♡</span>
+        <div class="grid-paper">
+          <div class="s4-content">
+            <h2 class="s4-heading">Choose Your Gifts!</h2>
+            <div class="s4-row">
+              <button class="gift-btn" data-gift="envelope" aria-label="Envelope"><img src="assets/envelope.png" alt="Envelope" /></button>
+              <button class="gift-btn gift-btn--center" data-gift="bouquet" aria-label="Rose bouquet"><img src="assets/bouquet.png" alt="Rose bouquet" /></button>
+              <button class="gift-btn" data-gift="giftbox" aria-label="Gift box"><img src="assets/giftbox.png" alt="Gift box" /></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 5 — Love Letter ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-5">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="torn torn-left"><div class="torn-inner"></div></div>
+        <div class="torn torn-right"><div class="torn-inner"></div></div>
+        <div class="stars-group s2-stars">
+          <div class="star star-lg">★</div>
+          <div class="star star-md">★</div>
+          <div class="star star-sm">★</div>
+        </div>
+        <div class="flowers-group">
+          <span class="flower f1">🌺</span>
+          <span class="flower f2">🌺</span>
+        </div>
+        <div class="grid-paper">
+          <button class="ll-back" id="llBackBtn">‹ Back</button>
+            <figure class="polaroid pol-tl">
+              
+              <div class="pol-photo"><img src="assets/photo-1.jpg" alt="Photo 1" onerror="this.style.display='none'" /></div>
+              <span class="pol-doodle">♡</span>
+            </figure>
+            <figure class="polaroid pol-tr">
+              <span class="tape"></span>
+              <div class="pol-photo"><img src="assets/photo-2.jpg" alt="Photo 2" onerror="this.style.display='none'" /></div>
+              <span class="pol-doodle"></span>
+            </figure>
+            <figure class="polaroid pol-bl">
+              <span class="tape"></span>
+              <div class="pol-photo"><img src="assets/photo-3.jpg" alt="Photo 3" onerror="this.style.display='none'" /></div>
+              <span class="pol-doodle"></span>
+            </figure>
+            <figure class="polaroid pol-br">
+              
+              <div class="pol-photo"><img src="assets/photo-4.jpg" alt="Photo 4" onerror="this.style.display='none'" /></div>
+              <span class="pol-doodle">♡</span>
+            </figure>
+            <figure class="polaroid pol-ml">
+              
+              <div class="pol-photo"><img src="assets/photo-5.jpg" alt="Photo 5" onerror="this.style.display='none'" /></div>
+            </figure>
+            <figure class="polaroid pol-mr">
+              <span class="tape"></span>
+              <div class="pol-photo"><img src="assets/photo-6.jpg" alt="Photo 6" onerror="this.style.display='none'" /></div>
+            </figure>
+          <div class="letter"><div class="letter-text">
+            <p>Dear Love,</p>
+            <p>Happy Girlfriend's Day. ❤️ I hope today reminds you how deeply loved and appreciated you truly are.</p>
+            <p>It's amazing how much life has changed since we met. Every moment we've shared has become a memory I'll always cherish, and you've become one of the most special people in my life.</p>
+            <p>I'm not always good at expressing my feelings, but I hope you know how grateful I am for you. Your smile, your kindness, and your love make every day brighter.</p>
+            <p>No matter what life brings, I'll always wish the best for you. Keep smiling, keep believing in yourself, and keep chasing your dreams. I'll always be cheering for you.</p>
+            <p>Thank you for being my happiness. I love you so much.<br>Happy Girlfriend's Day. ❤️</p>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 6 — Build Your Bouquet ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-6">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="grid-paper">
+          <span class="bb-torn bb-torn--tl"></span>
+          <span class="bb-torn bb-torn--br"></span>
+          <button class="ll-back" id="bbBackBtn">‹ Back</button>
+          <div class="bb-content">
+            <h2 class="bb-heading">Build Your Bouquet <span class="bb-flower">🌸</span></h2>
+            <p class="bb-sub">Choose your favourite flowers......</p>
+            <div class="bb-row" role="radiogroup" aria-label="Bouquet">
+              <button class="bb-opt" role="radio" aria-checked="false" data-bouquet="roses" aria-label="Roses"><img src="assets/bouquet-roses.png" alt="Roses" /></button>
+              <button class="bb-opt" role="radio" aria-checked="false" data-bouquet="tulips" aria-label="Tulips"><img src="assets/bouquet-tulips.png" alt="Tulips" /></button>
+              <button class="bb-opt" role="radio" aria-checked="false" data-bouquet="sunflowers" aria-label="Sunflowers"><img src="assets/bouquet-sunflowers.png" alt="Sunflowers" /></button>
+            </div>
+            <button class="bb-next" id="bbNextBtn" disabled>Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 7 — Selected Bouquet ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-7">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="grid-paper">
+          <span class="bb-torn bb-torn--tl"></span>
+          <span class="bb-torn bb-torn--br"></span>
+          <button class="ll-back" id="sbBackBtn">‹ Back</button>
+          <div class="sb-content">
+            <div class="sb-left">
+              <img class="sb-char" src="assets/character.png" alt="Cute character" />
+              <p class="sb-hand">flowers for<br>my sweetheart!</p>
+              <span class="sb-red-stars">★ ★</span>
+            </div>
+            <div class="sb-center">
+              <img class="sb-bouquet" id="sbBouquetImg" src="assets/bouquet-sunflowers.png" alt="Selected bouquet" />
+            </div>
+            <div class="sb-right">
+              <span class="sb-spark sb-spark1">✧ ⋆ ˖</span>
+              <div class="sb-oval sb-oval--a">“ Who's she? ”</div>
+              <div class="sb-line">“The best part of my day”</div>
+              <span class="sb-spark sb-spark2">⋆ ✧ ˚</span>
+              <div class="sb-oval sb-oval--b">i'm your #1 fan</div>
+              <div class="sb-oval sb-oval--c">my favorite person</div>
+              <span class="sb-purple-star">★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 8 — Gift Intro / I LOVE YOU ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-8">
+    <div class="card-wrapper">
+      <div class="card-frame">
+        <div class="grid-paper">
+          <span class="bb-torn bb-torn--tl"></span>
+          <span class="bb-torn bb-torn--br"></span>
+          <button class="ll-back" id="gbBackBtn">‹ Back</button>
+          <span class="gb-star gb-star1">★</span>
+          <span class="gb-star gb-star2">★</span>
+          <span class="gb-flower">🌺</span>
+          <div class="gb-content">
+            <div class="gb-left">
+              <div class="gb-vinyl"><img src="assets/vinyl.png" alt="Vinyl record" onerror="this.style.display='none'" /></div>
+              <div class="gb-player">
+                <div class="gb-thumb"><img src="assets/album.jpg" alt="" onerror="this.style.display='none'" /></div>
+                <div class="gb-song">
+                  <strong>I Think They Call This Love</strong>
+                  <span>Matthew Ifield</span>
+                  <div class="gb-bar"><div class="gb-bar-fill" id="gbBarFill"></div></div>
+                </div>
+                <button class="gb-play" id="gbPlayBtn" aria-label="Play">▶</button>
+                <audio id="gbAudio" src="assets/song.mp3" preload="none"></audio>
+              </div>
+            </div>
+            <div class="gb-right">
+              <button class="gb-open" id="gbOpenBtn" aria-label="Open"><img src="assets/open-envelope.png" alt="OPEN" /></button>
+              <img class="gb-love" id="gbLoveImg" src="assets/love-card.png" alt="I love you so much" hidden />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SCREEN 3 — POV TikTok / Laptop ══════════ -->
+  <div class="s-screen s-screen--hidden" id="screen-3">
+
+    <!-- ── Black phone/social wrapper ── -->
+    <div class="tiktok-shell">
+
+      <!-- Status bar -->
+      <div class="tt-status-bar">
+        <span class="tt-time">9:56</span>
+        <div class="tt-status-icons">
+          <span>📶</span><span>🔋</span>
+        </div>
+      </div>
+
+      <!-- Profile header -->
+      <div class="tt-header">
+        <button class="tt-back" id="ttBackBtn">&#8592;</button>
+        <div class="tt-profile">
+          <div class="tt-avatar">Y</div>
+          <div class="tt-profile-info">
+            <span class="tt-username">•&nbsp;◎&nbsp;YASH&nbsp;◎&nbsp;•</span>
+            <span class="tt-ago">2d ago</span>
+          </div>
+        </div>
+        <button class="tt-plus">&#43;</button>
+      </div>
+
+      <!-- Main content: pink area + right sidebar -->
+      <div class="tt-body">
+
+        <!-- Pink POV area -->
+        <div class="tt-pink-area">
+
+          <!-- POV heading -->
+          <p class="pov-line">
+            <strong class="pov-pov">POV:</strong>
+            <span class="pov-rest"> He surprises you with<br>this on Girlfriend's Day 💗</span>
+          </p>
+
+          <!-- Laptop mockup -->
+          <div class="lp-wrap">
+            <!-- Lid -->
+            <div class="lp-lid">
+              <div class="lp-cam"><div class="lp-cam-dot"></div></div>
+              <div class="lp-screen">
+                <img src="assets/laptop-cry.png" alt="Girlfriend Day surprise" class="lp-img" />
+              </div>
+              <div class="lp-glare"></div>
+            </div>
+            <!-- Hinge -->
+            <div class="lp-hinge"></div>
+            <!-- Base -->
+            <div class="lp-base">
+              <div class="lp-kb">
+                <div class="lp-row"><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span></div>
+                <div class="lp-row"><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span><span class="lp-k lp-kw"></span><span class="lp-k"></span></div>
+                <div class="lp-row"><span class="lp-k lp-kxl"></span><span class="lp-k lp-kxl"></span></div>
+              </div>
+              <div class="lp-track"></div>
+            </div>
+            <div class="lp-foot">
+              <div class="lp-ft"></div><div class="lp-ft"></div>
+            </div>
+          </div><!-- /lp-wrap -->
+
+        </div><!-- /tt-pink-area -->
+
+        <!-- Right sidebar — interaction icons -->
+        <div class="tt-sidebar">
+          <div class="tt-action">
+            <span class="tt-icon">♡</span>
+            <span class="tt-count">1,588</span>
+          </div>
+          <div class="tt-action">
+            <span class="tt-icon">💬</span>
+            <span class="tt-count">5,250</span>
+          </div>
+          <div class="tt-action">
+            <span class="tt-icon">↗</span>
+            <span class="tt-count">27</span>
+          </div>
+          <div class="tt-action">
+            <span class="tt-icon">⊿</span>
+            <span class="tt-count">2,619</span>
+          </div>
+          <div class="tt-action">
+            <span class="tt-icon">🔖</span>
+            <span class="tt-count">1,125</span>
+          </div>
+        </div>
+
+      </div><!-- /tt-body -->
+
+      <!-- Bottom bar -->
+      <div class="tt-bottom">
+        <div class="tt-bottom-left">
+          <div class="tt-mini-avatars">
+            <div class="tt-mini-av">K</div>
+            <div class="tt-mini-av" style="margin-left:-6px">W</div>
+          </div>
+          <span class="tt-caption-text">_kanishka___ and webofwishess</span>
+          <button class="tt-follow">Follow</button>
+        </div>
+        <div class="tt-music-row">🎵 Matthew Ifield · I Think T</div>
+        <div class="tt-reply-bar">
+          <span class="tt-reply-icon">💌</span>
+          <span class="tt-reply-text">Comment "LOVE" and I'll DM you the details...</span>
+        </div>
+      </div>
+
+    </div><!-- /tiktok-shell -->
+  </div><!-- /screen-3 -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+
